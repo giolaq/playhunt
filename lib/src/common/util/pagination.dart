@@ -55,6 +55,8 @@ class PaginationHelper<T> {
     return completer.future;
   }
 
+
+
   Stream<http.Response> fetchStreamed(String method, String path, {int pages,
       bool reverse: false, int start, Map<String, String> headers,
       Map<String, dynamic> params, String body, int statusCode: 200}) {
@@ -123,7 +125,7 @@ class PaginationHelper<T> {
     return controller.stream;
   }
 
-  Stream<T> objects(String method, String path, JSONConverter converter,
+  Stream<List<T>> objects(String method, String path, JSONConverter converter,
       {int pages, bool reverse: false, int start, Map<String, String> headers,
       Map<String, dynamic> params, String body, int statusCode: 200, String preview}) {
     if (headers == null) headers = {};
@@ -131,6 +133,7 @@ class PaginationHelper<T> {
       headers["Accept"] = preview;
     }
     headers.putIfAbsent("Accept", () => "application/vnd.github.v3+json");
+
     return fetchStreamed(method, path,
         pages: pages,
         start: start,
@@ -140,7 +143,8 @@ class PaginationHelper<T> {
         body: body,
         statusCode: statusCode).expand((response) {
           var json = response.asJSON();
-          return (json as List).map(converter).toList(growable:false);
+          return (json['Items'] as List).map(converter).toList(growable:false);
         });
+
   }
 }

@@ -7,7 +7,7 @@ class HuntService extends Service {
   HuntService(PlayHunt playhunt) : super(playhunt);
 
   /// List the hunt
-  Stream<Hunt> listHunts() {
+  Stream<List<Hunt>>  listHunts() {
 
     return new PaginationHelper(_playhunt).objects(
         "GET", "/hunt", Hunt.fromJSON);

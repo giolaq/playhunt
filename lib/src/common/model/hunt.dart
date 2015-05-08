@@ -5,7 +5,7 @@ class Hunt {
 
   /// Hunt ID
   @ApiName("id")
-  int id;
+  String id;
 
   /// Full Hunt Name
   @ApiName("displayName")
