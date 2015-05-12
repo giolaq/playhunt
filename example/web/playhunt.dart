@@ -3,7 +3,7 @@
 
 library playhunt.example;
 
-import 'package:playhunt/browser.dart';
+import '../../packages/playhunt/browser.dart';
 
 main() {
   /* Creates a PlayHunt Client */

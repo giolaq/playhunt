@@ -1,0 +1,30 @@
+<link rel="import" href="packages/polymer/polymer.html">
+<link rel="import" href="hunt-card.html">
+
+<polymer-element name="hunt-list">
+    <template>
+        <style>
+            :host {
+                display: block;
+                width: 100%;
+            }
+            hunt-card {
+                margin-bottom: 30px;
+            }
+        </style>
+
+        <div layout vertical center>
+
+            <template repeat="{{hunt in listhunts}}">
+                <hunt-card>
+                    <img src="images/avatar-07.png" width="70" height="70">
+                    <h2>{{hunt.id}}</h2>
+                    <p>{{hunt.name}}</p>
+                </hunt-card>
+            </template>
+
+        </div>
+    </template>
+    <script type="application/dart" src="hunt-list.dart"></script>
+
+</polymer-element>

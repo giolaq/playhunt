@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="css/hunts.css" rel="stylesheet" media="screen">
+
+    <link rel="import" href="packages/core_elements/core_header_panel.html">
+    <link rel="import" href="packages/core_elements/core_toolbar.html">
+    <link rel="import" href="packages/core_elements/core_icons.html">
+
+    <link rel="import" href="packages/paper_elements/paper_tabs.html">
+    <link rel="import" href="packages/paper_elements/paper_fab.html">
+
+    <link rel="import" href="hunt-list.html">
+
+    <title>Hunts</title>
+
+
+    <!-- Start the application -->
+    <script type="application/dart">export 'package:polymer/init.dart';</script>
+</head>
+
+<body unresolved>
+
+<core-header-panel>
+
+    <core-toolbar>
+
+        <paper-tabs id="tabs" selected="all" self-end>
+            <paper-tab name="all">All</paper-tab>
+            <paper-tab name="favorites">Favorites</paper-tab>
+        </paper-tabs>
+
+    </core-toolbar>
+
+    <!-- main page content will go here -->
+
+    <div class="container" layout vertical center>
+        <hunt-list></hunt-list>
+    </div>
+
+</core-header-panel>
+<div class="container" layout vertical center>
+
+</div>
+
+
+    <paper-fab icon="add"></paper-fab>
+
+
+  <!--script type="application/dart" src="playhunt.dart"></script-->
+  <script src="packages/browser/dart.js"></script>
+</body>
+
+</html>

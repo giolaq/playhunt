@@ -1,0 +1,10 @@
+name: hunt
+description: An example of playhunt lib use
+dependencies:
+  polymer: any
+  core_elements: any
+  paper_elements: any
+transformers:
+- polymer:
+    entry_points:
+    - web/hunts.html
