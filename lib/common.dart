@@ -31,3 +31,4 @@ part 'src/common/hunts_service.dart';
 
 
 part 'src/common/model/hunt.dart';
+part 'src/common/model/clue.dart';

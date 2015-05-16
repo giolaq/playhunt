@@ -1,22 +1,36 @@
 library playhunt.example;
 
 import 'package:polymer/polymer.dart';
+import 'dart:html';
 
 import '../../packages/playhunt/browser.dart';
 
 
 @CustomTag('new-hunt')
 class NewHuntElement extends PolymerElement {
-  @observable int count = 0;
+  @observable String id = '';
+  @observable String name = '';
+  @observable String imageUrl = '';
+  @observable String clues = '';
+
+  var playhunt;
 
   NewHuntElement.created() : super.created() {
     /* Creates a PlayHunt Client */
-    var playhunt = createPlayHuntClient();
+    playhunt = createPlayHuntClient();
 
+
+  }
+
+  void saveHunt(Event e, var detail, Node target) {
     Hunt aHunt = new Hunt();
-    aHunt.id = "ssss";
-    aHunt.name = "Giovanni";
-    aHunt.imageUrl = "immaggginne!";
+    aHunt.id = id;
+    aHunt.name = name;
+    aHunt.imageUrl = imageUrl;
+
+    Clue clu1 = new Clue();
+    aHunt.clues = new List<Clue>();
+    aHunt.clues.add(clu1);
 
     playhunt.hunts.createHunt(aHunt).then((hunt) {
       print(hunt);

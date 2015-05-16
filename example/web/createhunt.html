@@ -11,7 +11,7 @@
     <link rel="import" href="packages/paper_elements/paper_tabs.html">
     <link rel="import" href="packages/paper_elements/paper_fab.html">
 
-    <link rel="import" href="hunt-list.html">
+    <link rel="import" href="new-hunt.html">
 
     <title>Hunts List</title>
     <!-- Start the application -->
@@ -24,9 +24,8 @@
 
     <core-toolbar>
 
-        <paper-tabs id="tabs" selected="all" self-end>
-            <paper-tab name="all">All</paper-tab>
-            <paper-tab name="favorites">Favorites</paper-tab>
+        <paper-tabs id="tabs" selected="create" self-end>
+            <paper-tab name="create">Create Hunt</paper-tab>
         </paper-tabs>
 
     </core-toolbar>
@@ -34,17 +33,13 @@
     <!-- main page content will go here -->
 
     <div class="container" layout vertical center>
-        <hunt-list></hunt-list>
+        <new-hunt></new-hunt>
     </div>
 
 </core-header-panel>
 <div class="container" layout vertical center>
 
 </div>
-
-
-    <paper-fab icon="add"></paper-fab>
-
 
   <!--script type="application/dart" src="playhunt.dart"></script-->
   <script src="packages/browser/dart.js"></script>

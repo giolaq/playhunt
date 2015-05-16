@@ -16,6 +16,9 @@ class Hunt {
   @ApiName("imageUrl")
   String imageUrl;
 
+  @ApiName("clues")
+  List<Clue> clues;
+
 
   static Hunt fromJSON(input, [Hunt instance]) {
     if (input == null) return null;
@@ -26,14 +29,18 @@ class Hunt {
       ..name = input['displayName']
       ..id = input['id']
       ..imageUrl = input['imageUrl'];
+
   }
 
 
   String toJSON() {
+    var cluesJson = [];
+    cluesJson.add(clues[0].toJSON());
     return JSON.encode({
       "displayName": name,
       "id": id,
-      "imageUrl": imageUrl
+      "imageUrl": imageUrl,
+      "clues" : cluesJson
     });
   }
 

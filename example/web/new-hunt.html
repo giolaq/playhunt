@@ -1,8 +1,25 @@
 <link rel="import" href="packages/polymer/polymer.html">
+<link rel="import" href="packages/paper_elements/paper_input.html">
 
 <polymer-element name="new-hunt">
+
     <template>
-        <content></content>
+        <style>
+            paper-fab {
+                position: absolute;
+                bottom: 16px;
+                right: 16px;
+            }
+            .clues {
+                width: 300px; height: 150px;
+            }
+        </style>
+        <p><paper-input floatingLabel label="Hunt Id" value={{id}}></paper-input></p>
+        <p><paper-input floatingLabel label="Hunt Name" value={{name}}></paper-input></p>
+        <p><paper-input floatingLabel label="Image Url" value={{imageUrl}}></paper-input></p>
+        <p> <textarea class="clues" value="{{clues}}" placeholder="Clues"> </textarea></p>
+        <paper-fab icon="add" on-tap="{{saveHunt}}"></paper-fab>
+
     </template>
     <script type="application/dart" src="new-hunt.dart"></script>
 
