@@ -20,6 +20,7 @@ part 'src/common/util/pagination.dart';
 part 'src/common/util/utils.dart';
 part 'src/common/util/encoding_utils.dart';
 part 'src/common/util/errors.dart';
+part 'src/common/util/auth.dart';
 
 
 

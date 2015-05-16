@@ -40,7 +40,7 @@ void initPlayHunt() {
  * Creates a PlayHunt Client
  */
 PlayHunt createPlayHuntClient(
-    { String endpoint: "http://admin:admin@localhost:8080"}) {
+    { String endpoint: "http://localhost:8080"}) {
   initPlayHunt();
   return new PlayHunt(endpoint: endpoint);
 }

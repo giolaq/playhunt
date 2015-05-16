@@ -29,5 +29,14 @@ class Hunt {
   }
 
 
+  String toJSON() {
+    return JSON.encode({
+      "displayName": name,
+      "id": id,
+      "imageUrl": imageUrl
+    });
+  }
+
+
 
 }

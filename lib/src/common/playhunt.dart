@@ -22,7 +22,7 @@ class PlayHunt {
   /**
    * Authentication Information
    */
- // Authentication auth;
+  Authentication auth;
 
   /**
    * API Endpoint
@@ -46,9 +46,10 @@ class PlayHunt {
    * [endpoint] is the api endpoint to use
    * [auth] is the authentication information
    */
-  PlayHunt({this.endpoint: "http://162.248.167.159:8080/",
+  PlayHunt({Authentication auth, this.endpoint: "http://162.248.167.159:8080/",
          http.Client client})
-  : this.client = client == null ? defaultClient() : client;
+  : this.auth = auth == null ? new Authentication.anonymous() : auth,
+    this.client = client == null ? defaultClient() : client;
 
 
   /// Service to explore GitHub.
@@ -57,6 +58,30 @@ class PlayHunt {
       _hunts = new HuntService(this);
     }
     return _hunts;
+  }
+
+  Future<dynamic> postJSON(String path, {int statusCode,
+  void fail(http.Response response), Map<String, String> headers,
+  Map<String, String> params, JSONConverter convert, body, String preview}) {
+    if (headers == null) headers = {};
+
+    if (preview != null) {
+      headers["Accept"] = preview;
+    }
+
+    if (convert == null) {
+      convert = (input) => input;
+    }
+
+    headers.putIfAbsent("Content-Type", () => "application/json; charset=utf-8");
+
+    headers.putIfAbsent("Accept", () => "application/json; charset=utf-8");
+
+    return request("POST", path, headers: headers, params: params, body: body,
+    statusCode: statusCode, fail: fail)
+    .then((response) {
+      return convert(JSON.decode(response.body));
+    });
   }
 
   /**
@@ -120,12 +145,12 @@ class PlayHunt {
       headers["Accept"] = preview;
     }
 
-   /* if (auth.isToken) {
+    if (auth.isToken) {
       headers.putIfAbsent("Authorization", () => "token ${auth.token}");
     } else if (auth.isBasic) {
       var userAndPass = utf8ToBase64('${auth.username}:${auth.password}');
       headers.putIfAbsent("Authorization", () => "basic ${userAndPass}");
-    }*/
+    }
 
     if (method == "PUT" && body == null) {
       headers.putIfAbsent("Content-Length", () => "0");
@@ -204,5 +229,20 @@ class PlayHunt {
         throw new ValidationFailed(this, buff.toString());
     }
     throw new UnknownError(this);
+  }
+
+
+  /**
+   * Disposes of this PlayHunt Instance.
+   *
+   * No other methods on this instance should be called after this method is called.
+   */
+  void dispose() {
+    // Destroy the Authentication Information
+    // This is needed for security reasons.
+    auth = null;
+
+    // Closes the HTTP Client
+    client.close();
   }
 }

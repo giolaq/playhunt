@@ -4,6 +4,7 @@ dependencies:
   polymer: any
   core_elements: any
   paper_elements: any
+  crypto: '>=0.9.0 <1.0.1'
 transformers:
 - polymer:
     entry_points:
