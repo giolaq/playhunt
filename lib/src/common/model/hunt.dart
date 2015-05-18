@@ -1,23 +1,20 @@
 part of playhunt.common;
 
 /// Model class for a Hunt.
-class Hunt {
+class Hunt extends Object with Serializable {
 
   /// Hunt ID
-  @ApiName("id")
   String id;
 
   /// Full Hunt Name
-  @ApiName("displayName")
   String name;
 
 
   /// Image url
-  @ApiName("imageUrl")
   String imageUrl;
 
-  @ApiName("clues")
   List<Clue> clues;
+
 
 
   static Hunt fromJSON(input, [Hunt instance]) {
@@ -31,19 +28,6 @@ class Hunt {
       ..imageUrl = input['imageUrl'];
 
   }
-
-
-  String toJSON() {
-    var cluesJson = [];
-    cluesJson.add(clues[0].toJSON());
-    return JSON.encode({
-      "displayName": name,
-      "id": id,
-      "imageUrl": imageUrl,
-      "clues" : cluesJson
-    });
-  }
-
 
 
 }

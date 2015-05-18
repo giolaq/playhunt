@@ -29,6 +29,13 @@ class NewHuntElement extends PolymerElement {
     aHunt.imageUrl = imageUrl;
 
     Clue clu1 = new Clue();
+
+    clu1.id  = "1";
+    clu1.type = "clue";
+    clu1.displayName = "Let's Play!";
+    clu1.displayText = "Play";
+    clu1.displayImage = "img.jpg";
+
     aHunt.clues = new List<Clue>();
     aHunt.clues.add(clu1);
 

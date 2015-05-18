@@ -26,7 +26,7 @@ part of playhunt.common;
 "wrongMessage": "No, it's MediaRecorder!\n",
 "rightMessage": "That's right!"
 } */
-class Clue {
+class Clue extends Object with Serializable {
 
   String id;
   String type;
@@ -36,7 +36,6 @@ class Clue {
   String displayImage;
   List<Tag> tags;
   Question question;
-
 
 
   static Clue fromJSON(input, [Clue instance]) {
@@ -54,18 +53,10 @@ class Clue {
       ..question = input['question'];
   }
 
-
-  String toJSON() {
-    return JSON.encode({
-      "id": id
-    });
-  }
-
 }
 
-class Tag {
+class Tag extends Object with Serializable {
   String id;
-
 
 
   static Tag fromJSON(input, [Tag instance]) {
@@ -78,25 +69,16 @@ class Tag {
   }
 
 
-  String toJSON() {
-    return JSON.encode({
-      "id": id
-    });
-  }
-
-
 
 }
 
-class Question {
+class Question extends Object with Serializable {
 
   String question;
   List<String> answers;
   String correctAnswer;
   String wrongMessage;
   String rightMessage;
-
-
 
   static Question fromJSON(input, [Question instance]) {
     if (input == null) return null;
@@ -112,14 +94,6 @@ class Question {
   }
 
 
-  String toJSON() {
-    return JSON.encode({
-      "question": question,
-      "answers" : JSON.encode(answers),
-      "correctAnswer" : correctAnswer,
-      "wrongMessage" : wrongMessage,
-      "rigthMessage" : rightMessage
-    });
-  }
+
 
 }

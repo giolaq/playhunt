@@ -80,7 +80,7 @@ class PlayHunt {
     return request("POST", path, headers: headers, params: params, body: body,
     statusCode: statusCode, fail: fail)
     .then((response) {
-      return convert(JSON.decode(response.body));
+      return "ok";//convert(JSON.decode(response.body));
     });
   }
 
