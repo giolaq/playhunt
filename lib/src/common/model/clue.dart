@@ -26,15 +26,26 @@ part of playhunt.common;
 "wrongMessage": "No, it's MediaRecorder!\n",
 "rightMessage": "That's right!"
 } */
-class Clue extends Object with Serializable {
 
+@Entity()
+class Clue {
+
+
+  @Property()
   String id;
+  @Property()
   String type;
+  @Property()
   num shufflegroup;
+  @Property()
   String displayName;
+  @Property()
   String displayText;
+  @Property()
   String displayImage;
+  @Property()
   List<Tag> tags;
+  @Property()
   Question question;
 
 
@@ -55,7 +66,9 @@ class Clue extends Object with Serializable {
 
 }
 
-class Tag extends Object with Serializable {
+@Entity()
+class Tag  {
+  @Property()
   String id;
 
 
@@ -72,12 +85,18 @@ class Tag extends Object with Serializable {
 
 }
 
-class Question extends Object with Serializable {
+@Entity()
+class Question  {
 
+  @Property()
   String question;
+  @Property()
   List<String> answers;
+  @Property()
   String correctAnswer;
+  @Property()
   String wrongMessage;
+  @Property()
   String rightMessage;
 
   static Question fromJSON(input, [Question instance]) {

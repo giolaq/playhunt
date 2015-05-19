@@ -1,18 +1,24 @@
 part of playhunt.common;
 
 /// Model class for a Hunt.
-class Hunt extends Object with Serializable {
+///
+@Entity()
+class Hunt  {
 
   /// Hunt ID
+  @Property()
   String id;
 
   /// Full Hunt Name
+  @Property()
   String name;
 
 
   /// Image url
+  @Property()
   String imageUrl;
 
+  @Property()
   List<Clue> clues;
 
 

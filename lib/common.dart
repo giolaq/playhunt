@@ -10,7 +10,8 @@ import 'dart:convert' show JSON, UTF8;
 import 'package:crypto/crypto.dart' show CryptoUtils;
 
 import 'http.dart' as http;
-import 'dart:mirrors';
+
+import 'package:dartson/dartson.dart';
 
 
 part 'src/common/playhunt.dart';
@@ -23,7 +24,6 @@ part 'src/common/util/utils.dart';
 part 'src/common/util/encoding_utils.dart';
 part 'src/common/util/errors.dart';
 part 'src/common/util/auth.dart';
-part 'src/common/util/serializable.dart';
 
 
 

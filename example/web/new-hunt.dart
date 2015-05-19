@@ -6,6 +6,7 @@ import 'dart:html';
 import '../../packages/playhunt/browser.dart';
 
 
+
 @CustomTag('new-hunt')
 class NewHuntElement extends PolymerElement {
   @observable String id = '';
@@ -23,6 +24,7 @@ class NewHuntElement extends PolymerElement {
   }
 
   void saveHunt(Event e, var detail, Node target) {
+
     Hunt aHunt = new Hunt();
     aHunt.id = id;
     aHunt.name = name;

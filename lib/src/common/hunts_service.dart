@@ -15,8 +15,10 @@ class HuntService extends Service {
 
   ///Create an Hunt
   Future<Hunt> createHunt(Hunt hunt) {
-      return _playhunt.postJSON('/admin/hunt',
-      body: JSON.encode(hunt), convert: JSON.decode);
+    var dson = new Dartson.JSON();
+
+    return _playhunt.postJSON('/admin/hunt',
+      body: dson.encode(hunt), convert: JSON.decode);
   }
 
 
